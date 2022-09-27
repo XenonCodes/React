@@ -7,7 +7,7 @@ function App() {
     text: '',
     author: ''
   })
-  
+
   //4. Добавить в App useEffect - на каждое отправленное пользователем сообщение должен отвечать робот (должно автоматически отправляться сообщение с фиксированным текстом) - для этого необходимо проверять автора последнего сообщения.
   const textBot = "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
     }
   }, [messageList])
 
-//3. Добавить и стилизовать форму - поле для ввода текста и кнопка для отправки сообщения. При отправке сообщения обновление UI должно происходить за счет обновления стейта App (messageBody, setMessageBody).
+  //3. Добавить и стилизовать форму - поле для ввода текста и кнопка для отправки сообщения. При отправке сообщения обновление UI должно происходить за счет обновления стейта App (messageBody, setMessageBody).
   return (
     <div className="App">
       <Form data={messageBody} setData={setMessageBody} setMessage={setMessageList}></Form>
@@ -50,28 +50,28 @@ const Form = ({ data, setData, setMessage }) => {
   }
 
   return (
-    <div class="message-box">
+    <div className="message-box">
       <h2>Message</h2>
       <form onSubmit={submitForm}>
-        <div class="user-box">
+        <div className="user-box">
           <input placeholder='Имя' value={author} onChange={(el) =>
             setData(pervstate => ({ ...pervstate, author: el.target.value }))
           } />
           <label>Username</label>
         </div>
-        <div class="user-box">
+        <div className="user-box">
           <input placeholder='Текст' value={text} onChange={(el) =>
             setData(pervstate => ({ ...pervstate, text: el.target.value }))
           } />
           <label>Text message</label>
         </div>
-        <a href="#">
+        <button className='btn' type='submit'>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
-          <button className='btn' type='submit'>Отправить</button>
-        </a>
+          Отправить
+        </button>
       </form>
     </div>
   )
