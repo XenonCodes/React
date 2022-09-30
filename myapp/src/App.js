@@ -54,13 +54,13 @@ const Form = ({ data, setData, setMessage }) => {
       <h2>Message</h2>
       <form onSubmit={submitForm}>
         <div className="user-box">
-          <input placeholder='Имя' value={author} onChange={(el) =>
+          <input placeholder='Name' value={author} onChange={(el) =>
             setData(pervstate => ({ ...pervstate, author: el.target.value }))
           } />
           <label>Username</label>
         </div>
         <div className="user-box">
-          <input placeholder='Текст' value={text} onChange={(el) =>
+          <input placeholder='Text' value={text} onChange={(el) =>
             setData(pervstate => ({ ...pervstate, text: el.target.value }))
           } />
           <label>Text message</label>
@@ -70,7 +70,7 @@ const Form = ({ data, setData, setMessage }) => {
           <span></span>
           <span></span>
           <span></span>
-          Отправить
+          Send
         </button>
       </form>
     </div>
