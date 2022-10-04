@@ -1,23 +1,47 @@
+ul {
+  margin: 0;
+}
+
 body {
   padding: 0;
   font-family: sans-serif;
-  background: linear-gradient(#141e30, #243b55);
+  background-color: #1c2d43;
+}
+
+.chat-list {
+  position: fixed;
+  top: 10px;
+  bottom: 10px;
+  width: 150px;
+  border-radius: 20px;
+  padding: 20px;
+  list-style: none;
+  text-align: center;
+  background-color: #1976d2;
+  color: white;
+  font-size: 20px;
+}
+
+.chat-list li {
+  margin: 15px 0;
+  border: 3px solid white;
+  cursor: pointer;
+  padding: 5px 0;
 }
 
 .message-box {
   position: absolute;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  transform: translate(-50%, 0%);
+  left: 210px;
+  right: 10px;
+  padding: 35px;
   background: rgba(0, 0, 0, .5);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .message-box h2 {
-  margin: 0 0 30px;
+  margin: 0;
   padding: 0;
   color: #fff;
   text-align: center;
@@ -25,6 +49,7 @@ body {
 
 .message-box .user-box {
   position: relative;
+  width: 100%;
 }
 
 .message-box .user-box input {
@@ -32,7 +57,6 @@ body {
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
-  margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
@@ -60,6 +84,7 @@ body {
 
 .message-box form button {
   position: relative;
+  width: 100%;
   display: inline-block;
   padding: 10px 20px;
   color: #03e9f4;
@@ -93,7 +118,7 @@ body {
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
+  animation: btn-anim1 4s linear infinite;
 }
 
 @keyframes btn-anim1 {
@@ -107,69 +132,6 @@ body {
   }
 }
 
-.message-box button span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-
-  50%,
-  100% {
-    top: 100%;
-  }
-}
-
-.message-box button span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-
-  50%,
-  100% {
-    right: 100%;
-  }
-}
-
-.message-box button span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-
-  50%,
-  100% {
-    bottom: 100%;
-  }
-}
-
 .btn {
   border: none;
   outline: none;
@@ -179,16 +141,16 @@ body {
   cursor: pointer;
 }
 
-.messageList {
+.message-list {
   position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  top: 390px;
+  left: 210px;
+  right: 10px;
   color: white;
 }
 
 .message {
-  width: 350px;
+  width: 80%;
   margin: 0 auto 35px;
   border: 1px solid black;
   border-radius: 20px;
@@ -196,7 +158,7 @@ body {
   background: rgba(0, 0, 0, .5);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgb(0 0 0 / 60%);
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .message h3 {
