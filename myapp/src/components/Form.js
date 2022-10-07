@@ -21,9 +21,6 @@ const Form = ({ data, setData, setMessage, messageList }) => {
         <div className="message-box">
             <h2>Message</h2>
             <form onSubmit={submitForm}>
-                {
-                //1. Установить material-ui. Переделать форму с использованием компонентов из material-ui.
-                }
                 <Input setData={setData} data={data} messageList={messageList} />
                 <Button type="submit" variant="contained" endIcon={<SendIcon />}> Send </Button>
             </form>

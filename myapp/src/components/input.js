@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 
 export default function Input({ setData, data, messageList }) {
     const { text, author } = data
-    const inputRef = React.useRef(null) //2. Добавить автофокус на текстовое поле при открытии страницы и после отправки сообщения.
+    const inputRef = React.useRef(null)
     React.useEffect(() => {
         inputRef.current?.focus()
     }, [messageList])
