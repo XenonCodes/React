@@ -1,5 +1,6 @@
-ul {
+* {
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -8,13 +9,27 @@ body {
   background-color: #1c2d43;
 }
 
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1976d2;
+  height: 43px;
+  align-items: center;
+  margin: 0 0 10px;
+}
+
+.navBar a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
 .chat-list {
-  position: fixed;
-  top: 10px;
-  bottom: 10px;
-  width: 150px;
-  border-radius: 20px;
+  border-radius: 0 20px 20px 0;
+  width: 18%;
   padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
   list-style: none;
   text-align: center;
   background-color: #1976d2;
@@ -23,16 +38,34 @@ body {
 }
 
 .chat-list li {
+  justify-content: space-around;
   margin: 15px 0;
   border: 3px solid white;
   cursor: pointer;
   padding: 5px 0;
 }
 
+.chat-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.btn-add-chat {
+  text-decoration: none;
+  color: white;
+  font-size: 45px;
+  display: block;
+  padding: 11px 23px;
+  border: 3px solid white;
+  border-radius: 50px;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
 .message-box {
-  position: absolute;
-  left: 210px;
-  right: 10px;
   padding: 35px;
   background: rgba(0, 0, 0, .5);
   box-sizing: border-box;
@@ -141,8 +174,17 @@ body {
   cursor: pointer;
 }
 
+.wrp {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px;
+}
+
 .message-list {
-  position: absolute;
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column-reverse;
   top: 390px;
   left: 210px;
   right: 10px;
