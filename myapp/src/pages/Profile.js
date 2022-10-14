@@ -1,8 +1,35 @@
+import * as React from 'react';
+import Checkbox from '@mui/material/Checkbox';
+import { useDispatch, useSelector } from 'react-redux';
+
 export default function ProfilePage() {
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: "center", flexGrow: 1, height: "100vh", color: "#03e9f4", fontSize: "35px", flexDirection: "column" }}>
-            <p style={{ color: "white" }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style={{ color: "white" }}>You agree to all the rules of the chat</p>
+            <ControlledCheckbox />
         </div>
     )
+}
+
+export function ControlledCheckbox() {
+    const [checked, setChecked] = React.useState(false);
+    const isChecked = useSelector(state => state)
+    const dispatch = useDispatch()
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+        dispatch({type:'SWITCH_PROFILE'});
+    };
+
+    console.log(isChecked)
+
+    return (
+        <Checkbox
+            checked={checked}
+            value={isChecked}
+            onChange={handleChange}
+            inputProps={{ 'aria-label': 'controlled' }}
+        />
+    );
 }
