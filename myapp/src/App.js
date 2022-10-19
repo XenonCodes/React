@@ -1,5 +1,3 @@
-import './App.css';
-import * as React from 'react';
 import { Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import HomePage from './pages/Home';
@@ -8,7 +6,7 @@ import ProfilePage from './pages/Profile';
 import NotFound from './pages/NotFound';
 
 
-function App() {
+export default function App() {
 
   return (
     <div className="App">
@@ -26,5 +24,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

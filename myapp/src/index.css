@@ -7,6 +7,16 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: #1c2d43;
+  text-align: center;
+}
+
+.centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  height: 100vh;
+  flex-direction: column;
 }
 
 .navBar {
@@ -27,6 +37,7 @@ body {
 .chat-list {
   border-radius: 0 20px 20px 0;
   width: 18%;
+  min-width: 160px;
   padding: 20px;
   min-height: 100vh;
   box-sizing: border-box;
@@ -39,23 +50,22 @@ body {
 
 .chat-list li {
   justify-content: space-around;
-  margin: 15px 0;
-  border: 3px solid white;
-  cursor: pointer;
-  padding: 5px 0;
 }
 
 .chat-list a {
   text-decoration: none;
   color: white;
   font-size: 20px;
+  margin: 15px 0;
+  border: 3px solid white;
+  cursor: pointer;
+  padding: 9px 11px;
 }
 
 .btn-add-chat {
   text-decoration: none;
   color: white;
   font-size: 45px;
-  display: block;
   padding: 11px 23px;
   border: 3px solid white;
   border-radius: 50px;
