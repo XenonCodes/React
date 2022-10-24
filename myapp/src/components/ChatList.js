@@ -6,35 +6,27 @@ import { Link, useParams } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MessagList from './MessageList';
+import { useDispatch, useSelector } from 'react-redux';
+import { addChat, removeChat } from '../slices/slices'
 
 export default function ChatList() {
-    const [messageList, setMessageList] = React.useState([])
-    const [chatList, setChatList] = React.useState([])
     const { chatId } = useParams()
-
-    React.useEffect(() => {
-        setChatList(() => [{ title: 'Chat-1', message: [] }, { title: 'Chat-2', message: [] }])
-    }, [])
-    React.useEffect(() => {
-        setChatList((p) => {
-            p.forEach(el => el.message = messageList)
-            return [...p]
-        })
-    }, [messageList])
-
-    // console.log(chatList);
+    const isChats = useSelector(state => state.chats)
+    const dispatch = useDispatch()
+    // console.log(chatId);
+    console.log(isChats);
 
     return (
         <>
             <Box className="chat-list">
                 <List>
                     {
-                        chatList.map((el, index) => {
+                        isChats.map((el, index) => {
                             return (
-                                <ListItem id={index} key={index} disablePadding>
-                                    <Link to={`${index + 1}`}>{el.title}</Link>
+                                <ListItem key={index} disablePadding>
+                                    <Link to={`${el.id}`}>{el.title}</Link>
                                     <IconButton edge="end" aria-label="delete" onClick={() => {
-                                        setChatList((p) => p.filter(el => el !== p[index]))
+                                        dispatch(removeChat(index))
                                     }}>
                                         <DeleteIcon sx={{ fill: "white" }} />
                                     </IconButton>
@@ -43,12 +35,12 @@ export default function ChatList() {
                     }
                 </List>
                 <button className='btn-add-chat' onClick={() => {
-                    setChatList(p => [...p, { title: `Chat-${chatList.length + 1}`, message: messageList }])
+                    dispatch(addChat())
                 }}>+</button>
             </Box>
 
             {
-                chatId && chatList[chatId - 1] ? <MessagList messageList={messageList} setMessageList={setMessageList} /> : <h2 style={{ fontSize: "60px", width: "100%", height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>Select chat</h2>
+                chatId && isChats.find(el=> el.id === Number(chatId)) ? <MessagList /> : <h2 className='centre' style={{ fontSize: "60px", color: 'white' }}>Select chat</h2>
             }
         </>
     );
