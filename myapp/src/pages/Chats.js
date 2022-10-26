@@ -1,10 +1,10 @@
-import ChatList from '../components/ChatList';
+import ChatListContainer from '../components/ChatListContainer';
 
 export default function ChatsPage() {
 
     return (
         <div style={{ display: 'flex' }}>
-            <ChatList />
+            <ChatListContainer />
         </div>
     )
 }

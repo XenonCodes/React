@@ -1,21 +1,13 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import MessagList from './MessageList';
-import { useDispatch, useSelector } from 'react-redux';
+import MessagListContainer from './MessagListContainer';
 import { addChat, removeChat } from '../slices/slices'
 
-export default function ChatList() {
-    const { chatId } = useParams()
-    const isChats = useSelector(state => state.chats)
-    const dispatch = useDispatch()
-    // console.log(chatId);
-    console.log(isChats);
-
+export function ChatList({chatId, isChats, dispatch}) {
     return (
         <>
             <Box className="chat-list">
@@ -40,7 +32,7 @@ export default function ChatList() {
             </Box>
 
             {
-                chatId && isChats.find(el=> el.id === Number(chatId)) ? <MessagList /> : <h2 className='centre' style={{ fontSize: "60px", color: 'white' }}>Select chat</h2>
+                chatId && isChats.find(el=> el.id === Number(chatId)) ? <MessagListContainer /> : <h2 className='centre' style={{ fontSize: "60px", color: 'white' }}>Select chat</h2>
             }
         </>
     );
