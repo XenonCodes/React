@@ -5,10 +5,19 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import SendIcon from '@mui/icons-material/Send';
 import People from '@mui/icons-material/People';
+import Loader from '../components/Loader';
+import * as React from 'react';
 
-export default function HomePage({ userName }) {
+export default function HomePage({ userName, loading, setLoading }) {
+    React.useEffect(()=>{
+        setLoading(true)
+        setTimeout(()=>{
+            setLoading(false)
+        }, 700)
+    },[setLoading])
 
     return (
+        loading ? <Loader/> :
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: "center", flexGrow: 1, height: "100vh", color: "#03e9f4", fontSize: "35px", flexDirection: "column" }}>
             <h1>Welcome, {userName} !</h1>
             <p style={{ color: "white" }}>You are in the React test chat app.</p>
