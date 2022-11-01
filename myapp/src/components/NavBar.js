@@ -7,6 +7,7 @@ export default function NavBar() {
             <Link to={'/'}>Home</Link>
             <Link to={'/chats'}>Chats</Link>
             <Link to={'/profile'}>Profile</Link>
+            <Link to={'/newsfeed'}>News feed</Link>
         </div>
     )
 }

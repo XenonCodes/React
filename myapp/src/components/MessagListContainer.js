@@ -11,10 +11,10 @@ export default function MessagListContainer() {
     // console.log(chatId)
 
     React.useEffect(() => {
-        // setTimeout(()=>{dispatch(getBotMess())}, 2000)
-        dispatch(getBotMess())
+        setTimeout(()=>{dispatch(getBotMess())}, 2000)
+        // dispatch(getBotMess())
     }, [messageList, dispatch])
-    console.log(messageList)
+    // console.log(messageList)
 
     return (
         <MessagList chatId={chatId} messageList={messageList} />

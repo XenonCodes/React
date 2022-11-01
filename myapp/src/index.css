@@ -10,6 +10,42 @@ body {
   text-align: center;
 }
 
+.loader {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 43px;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader div {
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  background: rgb(22, 150, 255);
+  position: relative;
+  border-radius: 50px;
+  animation: scaleLoader 0.5s linear 0s infinite alternate;
+}
+
+@keyframes scaleLoader {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.5);
+  }
+}
+
 .centre {
   display: flex;
   align-items: center;
@@ -184,6 +220,12 @@ body {
   cursor: pointer;
 }
 
+.btn-news {
+  border: 3px solid white;
+  padding: 10px;
+  margin: 10px 0 25px;
+}
+
 .wrp {
   flex-grow: 1;
   display: flex;
@@ -215,4 +257,30 @@ body {
 
 .message h3 {
   color: #03e9f4;
+}
+
+.news {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wrp-news {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 23px;
+  width: 30%;
+  min-width: 340px;
+  border: 1px solid white;
+  flex-direction: column;
+  color: white;
+}
+
+.wrp-news img {
+  width: 300px;
+  height: 200px;
 }
