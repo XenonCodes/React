@@ -220,6 +220,15 @@ body {
   cursor: pointer;
 }
 
+.btn-exit {
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  border: 3px solid white;
+  padding: 10px;
+  margin: 10px 0 25px;
+}
+
 .btn-news {
   border: 3px solid white;
   padding: 10px;

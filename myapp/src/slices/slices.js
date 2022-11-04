@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 
 // Профиль
 const initialStateProfile = false
@@ -34,7 +36,6 @@ export const chatsReducer = chatsSlice.reducer
 
 // Cообщения
 // https://jsonplaceholder.typicode.com/comments
-
 export const getBotMess = createAsyncThunk('message/getBotMess', async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/comments');
     const data = response.json();
@@ -79,7 +80,6 @@ export const messageReducer = messageSlice.reducer
 
 // Новости
 // http://api.mediastack.com/v1/news?access_key=6605ac0bcb0ad7b99d0bc393d89d3ac4&countries=ru&languages=ru&limit=3
-
 export const getNews = createAsyncThunk('news/getNews', async () => {
     const response = await fetch('http://api.mediastack.com/v1/news?access_key=6605ac0bcb0ad7b99d0bc393d89d3ac4&countries=ru&languages=ru&limit=6');
     const data = response.json();
@@ -124,3 +124,72 @@ const newsSlice = createSlice({
 })
 export const { addNextNews } = newsSlice.actions
 export const newsReducer = newsSlice.reducer
+
+// User
+export const createUserThunk = createAsyncThunk('user/createUserThunk', async ({email, pass}) => {
+    try{
+        const userCredit = await createUserWithEmailAndPassword(auth, email, pass)
+        console.log(userCredit.user)
+        const userDate = {
+            email: userCredit.user.email,
+            token: userCredit.user.accessToken,
+            id: userCredit.user.uid
+        }
+        return userDate
+    }catch(er){
+        console.log(er.code, er.message)
+    }
+})
+
+export const signInUserThunk = createAsyncThunk('user/signInUserThunk', async ({email, pass}) => {
+    try{
+        const userCredit = await signInWithEmailAndPassword(auth, email, pass)
+        console.log(userCredit.user)
+        const userDate = {
+            email: userCredit.user.email,
+            token: userCredit.user.accessToken,
+            id: userCredit.user.uid
+        }
+        return userDate
+    }catch(er){
+        console.log(er.code, er.message)
+    }
+})
+
+const userSlice = createSlice ({
+    name: 'user',
+    initialState: {
+        email: null,
+        token: null,
+        id: null
+    },
+    reducers: {
+        removeUser(state) {
+            state.email = null
+            state.token = null
+            state.id = null
+        }
+    },
+    extraReducers: {
+        [createUserThunk.pending]: () => {
+            console.log("createUser.pending")
+        },
+        [createUserThunk.fulfilled]: (state, action) => {
+            return state = action.payload
+        },
+        [createUserThunk.rejected]: () => {
+            console.log("createUser.rejected")
+        },
+        [signInUserThunk.pending]: () => {
+            console.log("createUser.pending")
+        },
+        [signInUserThunk.fulfilled]: (state, action) => {
+            return state = action.payload
+        },
+        [signInUserThunk.rejected]: () => {
+            console.log("createUser.rejected")
+        }
+    }
+})
+export const { removeUser } = userSlice.actions
+export const userReducer = userSlice.reducer
