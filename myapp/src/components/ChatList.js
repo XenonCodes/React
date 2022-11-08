@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MessagListContainer from './MessagListContainer';
 import { addChat, removeChat } from '../slices/slices'
+import { addChatBase, getAllChatBase } from '../firebase/crud';
 
 export function ChatList({chatId, isChats, dispatch}) {
     return (
@@ -28,6 +29,8 @@ export function ChatList({chatId, isChats, dispatch}) {
                 </List>
                 <button className='btn-add-chat' onClick={() => {
                     dispatch(addChat())
+                    addChatBase({isChats})
+                    getAllChatBase()
                 }}>+</button>
             </Box>
 
